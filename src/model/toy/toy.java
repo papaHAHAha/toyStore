@@ -1,6 +1,6 @@
 package model.toy;
 
-public class toy {
+public class toy implements toysItem<toy>{
   private long id;
   private String name;
   private int amonut;
@@ -51,6 +51,7 @@ public class toy {
     sb.append(", количество: ");
     sb.append(getAmount());
     sb.append(", вес: ");
+    sb.append(getWeight());
     return sb.toString();
   }
 
