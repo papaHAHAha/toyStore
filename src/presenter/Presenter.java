@@ -24,7 +24,8 @@ public class Presenter {
   }
 
   public void updateWeight(int id, double weight) {
-    service.updateWeight(id, weight);
+    String answer = service.updateWeight(id, weight);
+    view.print(answer);
   }
 
   public void getToys() {

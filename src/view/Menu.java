@@ -6,10 +6,12 @@ import java.util.List;
 import view.commands.addToy;
 import view.commands.exit;
 import view.commands.getToys;
+import view.commands.updateWeight;
 
 public class Menu {
   private List<getToys> list;
   private addToy addToycmd;
+  private updateWeight updateWeightcmd;
   private exit exitcmd;
 
   public Menu(Console console) {
@@ -18,7 +20,9 @@ public class Menu {
 
     addToycmd = new addToy(console);
     exitcmd = new exit(console);
+    updateWeightcmd = new updateWeight(console);
   }
+
 
   public String print() {
     StringBuilder stringBuilder = new StringBuilder();
@@ -35,6 +39,11 @@ public class Menu {
 
     stringBuilder.append(list.size() + 2);
     stringBuilder.append(". ");
+    stringBuilder.append(updateWeightcmd.getDescription());
+    stringBuilder.append("\n");
+
+    stringBuilder.append(list.size() + 3);
+    stringBuilder.append(". ");
     stringBuilder.append(exitcmd.getDescription());
     stringBuilder.append("\n");
 
@@ -47,7 +56,11 @@ public class Menu {
     if (index == list.size()) {
       addToycmd.execute();
     } else if (index == list.size() + 1) {
+      updateWeightcmd.execute();
+    } else if (index == list.size() + 2) {
       exitcmd.execute();
+    } else {
+      list.get(index).execute();
     }
   }
 }

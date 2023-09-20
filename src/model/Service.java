@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import model.toy.toy;
@@ -17,7 +16,7 @@ public class Service {
     return toys.getInfo();
   }
 
-  public void setToys(toys<toy> toys){
+  public void setToys(toys<toy> toys) {
     this.toys = toys;
   }
 
@@ -27,18 +26,14 @@ public class Service {
     return "Игрушка добавлена";
   }
 
-  public void updateWeight(int id, double weight) {
-    String toysInfo = toys.getInfo();
-    String[] toyLines = toysInfo.split("\n");
-
-    for (String toyInfo : toyLines) {
-        String[] parts = toyInfo.split(",");  
-        int toyId = Integer.parseInt(parts[0]);
-        if (toyId == id) {
-            toy toy = new toy(parts[1], Integer.parseInt(parts[2]), Double.parseDouble(parts[3]));
-            toy.setWeight(weight);
-            break;
-        }
+  public String updateWeight(int id, double weight) {
+    List<toy> toyList = toys.getToysList();
+    for (toy toy : toyList) {
+      if (toy.getId() == id) {
+        toy.setWeight(weight);
+        break;
+      }
     }
-}
+    return "Вес изменен";
+  }
 }

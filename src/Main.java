@@ -1,5 +1,3 @@
-
-
 import model.toy.toy;
 import model.toy.toys;
 import view.Console;
@@ -14,11 +12,8 @@ public class Main {
 
     toys.add(toy1);
     toys.add(toy2);
-    System.out.println(toy1.toString());
-    System.out.println(toy2.toString());
 
     View view = new Console();
-
     view.setToys(toys);
     view.start();
   }

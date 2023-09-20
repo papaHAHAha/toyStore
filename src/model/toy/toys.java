@@ -43,4 +43,8 @@ public class toys<E extends toysItem<E>> {
     }
     return sb.toString();
   }
+
+  public List<E> getToysList(){
+    return toys;
+  }
 }
