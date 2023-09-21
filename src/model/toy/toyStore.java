@@ -3,24 +3,24 @@ package model.toy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class toys<E extends toysItem<E>> {
+public class toyStore<E extends toysItem<E>> {
   private long toysId;
-  private List<E> toys;
+  private List<E> prizeToys;
 
-  public toys() {
+  public toyStore() {
     this(new ArrayList<>());
   }
 
-  public toys(List<E> toys) {
-    this.toys = toys;
+  public toyStore(List<E> prizeToys) {
+    this.prizeToys = prizeToys;
   }
 
   public boolean add(E toy) {
     if (toy == null) {
       return false;
     }
-    if (!toys.contains(toy)) {
-      toys.add(toy);
+    if (!prizeToys.contains(toy)) {
+      prizeToys.add(toy);
       toy.setId(toysId++);
       return true;
     }
@@ -34,17 +34,14 @@ public class toys<E extends toysItem<E>> {
 
   public String getInfo() {
     StringBuilder sb = new StringBuilder();
-    sb.append("В списке ");
-    sb.append(toys.size());
+    sb.append("В призовом списке ");
+    sb.append(prizeToys.size());
     sb.append(" игрушек/ки: \n");
-    for (E toy : toys) {
+    for (E toy : prizeToys) {
       sb.append(toy);
       sb.append("\n");
     }
     return sb.toString();
   }
 
-  public List<E> getToysList(){
-    return toys;
-  }
 }
