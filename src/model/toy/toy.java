@@ -37,6 +37,10 @@ public class toy implements toysItem<toy>{
     this.weight = weight;
   }
 
+  public void decreaseAmount() {
+    this.amonut--;
+}
+
   @Override
   public String toString() {
     return getInfo();

@@ -27,6 +27,18 @@ public class toyStore<E extends toysItem<E>> {
     return false;
   }
 
+  public int size() {
+    return prizeToys.size();
+}
+
+  public E get(int index) {
+    return prizeToys.get(index);
+}
+
+public void remove(int index) {
+  prizeToys.remove(index);
+}
+
   @Override
   public String toString() {
     return getInfo();

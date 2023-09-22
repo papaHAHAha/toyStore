@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import view.commands.addToy;
+import view.commands.choosePrizeToy;
 import view.commands.exit;
 import view.commands.getToys;
+import view.commands.savePrizeToy;
 import view.commands.updateWeight;
 
 public class Menu {
   private List<getToys> list;
   private addToy addToycmd;
+  private savePrizeToy savePrizeToycmd;
+  private choosePrizeToy choosePrizeToycmd;
   private updateWeight updateWeightcmd;
   private exit exitcmd;
 
@@ -21,6 +25,8 @@ public class Menu {
     addToycmd = new addToy(console);
     exitcmd = new exit(console);
     updateWeightcmd = new updateWeight(console);
+    choosePrizeToycmd = new choosePrizeToy(console);
+    savePrizeToycmd = new savePrizeToy(console);
   }
 
 
@@ -44,6 +50,17 @@ public class Menu {
 
     stringBuilder.append(list.size() + 3);
     stringBuilder.append(". ");
+    stringBuilder.append(choosePrizeToycmd.getDescription());
+    stringBuilder.append("\n");
+
+    stringBuilder.append(list.size() + 4);
+    stringBuilder.append(". ");
+    stringBuilder.append(savePrizeToycmd.getDescription());
+    stringBuilder.append("\n");
+
+
+    stringBuilder.append(list.size() + 5);
+    stringBuilder.append(". ");
     stringBuilder.append(exitcmd.getDescription());
     stringBuilder.append("\n");
 
@@ -58,6 +75,10 @@ public class Menu {
     } else if (index == list.size() + 1) {
       updateWeightcmd.execute();
     } else if (index == list.size() + 2) {
+      choosePrizeToycmd.execute();
+    } else if (index == list.size() + 3) {
+      savePrizeToycmd.execute();
+    } else if (index == list.size() + 4) {
       exitcmd.execute();
     } else {
       list.get(index).execute();

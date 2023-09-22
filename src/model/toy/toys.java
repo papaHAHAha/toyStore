@@ -1,9 +1,11 @@
 package model.toy;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
 
-public class toys<E extends toysItem<E>> {
+public class toys<E extends toysItem<E>> implements Iterable<E> {
   private long toysId;
   private List<E> toys;
 
@@ -26,6 +28,19 @@ public class toys<E extends toysItem<E>> {
     }
     return false;
   }
+
+   public int size() {
+        return toys.size();
+    }
+
+    public Stream<E> stream() {
+        return toys.stream();
+    }
+
+  @Override
+    public Iterator<E> iterator() {
+        return toys.iterator();
+    }
 
   @Override
   public String toString() {

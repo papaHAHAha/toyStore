@@ -2,7 +2,9 @@ package view;
 
 import java.util.Scanner;
 
+import model.save.fileIo;
 import model.toy.toy;
+import model.toy.toyStore;
 import model.toy.toys;
 import presenter.Presenter;
 
@@ -13,7 +15,7 @@ public class Console implements View {
   private Menu menu;
 
   public Console() {
-    presenter = new Presenter(this, null);
+    presenter = new Presenter(this, null, null);
     scanner = new Scanner(System.in);
     menu = new Menu(this);
     work = true;
@@ -43,15 +45,31 @@ public class Console implements View {
     presenter.setToys(toys);
   }
 
-  public void addToy(String name, int amount, double weight){
+  public void setPrizeToys(toyStore<toy> prizeToys) {
+    presenter.setPrizeToys(prizeToys);
+  }
+
+  public void setFileIo(fileIo fileIo) {
+    presenter.setFileIo(fileIo);
+  }
+
+  public void addToy(String name, int amount, double weight) {
     presenter.addToy(name, amount, weight);
   }
 
-  public void updateWeight(int id, double weight){
+  public void updateWeight(int id, double weight) {
     presenter.updateWeight(id, weight);
   }
 
-  public void getToys(){
+  public void getToys() {
     presenter.getToys();
+  }
+
+  public void chooseAndAddPrizeToy() {
+    presenter.chooseAndAddPrizeToy();
+  }
+
+  public void savePrizeToyToFile() {
+    presenter.savePrizeToyToFile();
   }
 }
