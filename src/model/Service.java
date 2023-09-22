@@ -86,7 +86,6 @@ public class Service {
 
     try {
       fileIo.saveToFile(selectedToy, fileIo.filename);
-      System.out.println("Игрушка выдана");
     } catch (IOException e) {
       System.err.println("Ошибка при выдаче игрушки: " + e.getMessage());
     }
